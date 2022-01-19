@@ -1,0 +1,59 @@
+
+<style>
+
+</style>
+<h1>Listing Articles</h1>
+
+   <!-- Article -->
+     <% @articles.each do |article| %>
+
+            <div class="article">
+                <h2><span><a href="#"><%= article.title %></a></span></h2>
+                <p class="info noprint">
+                    <span class="date"><%= time_ago_in_words(article.updated_at) %></span><span class="noscreen"> ago</span>
+                 <!--   <span class="cat"><a href="#">Category</a></span><span class="noscreen">,</span>
+                    <span class="user"><a href="#">My name</a></span><span class="noscreen">,</span>
+                    <span class="comments"><a href="#">Comments</a></span> -->
+                </p>
+
+                <p><%= article.text %></p>
+                <p class="btn-more box noprint"><strong><%= link_to 'Show', article_path(article) %></strong></p>
+                <br/>
+                <% if article.User == current_user.id %>
+                  
+                
+                    <p class="btn-more box noprint"><strong><%= link_to 'Edit', edit_article_path(article) %></strong></p>
+                    <br/>
+                <p class="btn-more box noprint"><strong><%= button_to "Destroy",articles_path,  method: :destroy, data: { confirm: "Are you sure?" }, disable_with: "Processing...",:class=>"btn_cls"  %></strong></p>
+<% end %>
+            </div> <!-- /article -->
+
+            <hr class="noscreen" />
+             <% end %>
+ <!--
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th></th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <tr>
+      <td><%= article.title %></td>
+      <td><%= article.text %></td>
+      <td><%= link_to 'Show', article_path(article) %></td>
+      <td><%= link_to 'Edit', edit_article_path(article) %></td>
+      <td><%= button_to "Destroy", article_path(article), method: :delete, data: { confirm: "Are you sure?" }, class:"btn_cls" %></td>
+    </tr>
+  <% end %>
+</table>
+-->
+<br/>
+<br/>
+<!-- <%= link_to 'My Blog', controller: 'articles' %>-->
+<p class="btn-add-new box noprint">
+<strong>
+<%= link_to 'Add New', new_article_path %>
+</strong>
+</p>

@@ -1,0 +1,19 @@
+
+
+<p>
+  <strong>Commenter:</strong>
+  <%= comment.commenter %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= comment.body %>
+</p>
+
+ <br/>
+  <% if comment.User == current_user.id %>
+<%= button_to "Destroy Comment", [comment.article, comment],
+               method: :delete,
+               data: { confirm: "Are you sure?" },:class=>"destroy-btn" %>
+               <% end%>
+   
